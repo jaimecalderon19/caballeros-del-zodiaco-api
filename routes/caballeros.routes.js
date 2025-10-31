@@ -6,6 +6,8 @@ const Caballero = require('../models/caballeroModel');
 router.get('/buscar-caballero', async (req, res) => {
   const { nombre } = req.query;
 
+  console.log('Buscando caballero con nombre:', nombre);
+
   if (!nombre) {
     return res.status(400).json({ error: 'Debes proporcionar un nombre' });
   }
