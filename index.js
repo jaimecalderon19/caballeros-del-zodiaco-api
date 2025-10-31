@@ -3,6 +3,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const caballerosRoutes = require('./routes/caballeros.routes');
 const seedCaballeros = require('./seed/caballerosSeeder');
+const swaggerDocs = require('./config/swagger');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -15,6 +16,9 @@ connectDB().then(async () => {
 
 app.use(cors());
 app.use(express.json());
+
+// Inicializar Swagger
+swaggerDocs(app);
 
 // Rutas
 app.use('/api', caballerosRoutes);
